@@ -262,3 +262,58 @@ shreyas2.hasDriverLicense = shreyas2.age3 >= 18;
 console.log(`${shreyas2.firstName} is a ${shreyas2.age3} year old ${shreyas2.job}, and he has ${shreyas2.hasDriverLicense ? 'a' : 'no'} driver's license`);
 
 //Note: Arrays are also objects in JS, so they can also have methods.
+
+
+console.log("----------------------------------------");
+console.log("Chapter 6 - Introduction to loops");
+
+//1. for loop
+console.log("The FOR loop");
+
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋️‍♂️`);
+}
+
+// Looping arrays
+const arr = ['Shreyas', 23, true, 'Developer', ['c++', 'Python', 'JavaScript']];
+for (let i = 0; i < arr.length; i++)
+    console.log(arr[i], typeof(arr[i]));
+
+// continue -> exits the current iteration and moves to the next iteration
+// break -> exist the entire loop.
+
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == 'Developer') continue;
+    console.log("----")
+    if (typeof(arr[i]) == 'object') break;
+    console.log(arr[i]);
+}
+
+// looping backwards
+
+for (let i = arr.length-1; i >= 0; i--)
+    console.log(arr[i]);
+
+console.log("-----");
+// nested loops
+
+for (let i = 0; i < arr.length; i++) {
+    if (typeof(arr[i]) != 'object') continue;
+    for (let j = 0; j < arr[i].length; j++)
+        console.log(arr[i][j]);
+}
+
+
+// 2. while loop
+console.log("-----");
+console.log("The WHILE loop");
+let dice = 0;
+
+while (dice != 6) {
+    dice = Math.trunc(Math.random() * 6) + 1;
+    console.log(`You rolled a ${dice}`);
+}
+
+// Review -
+// Function declaration can be called before defining
+// Function expressions and arrow functions cannot be called before defining
