@@ -151,3 +151,41 @@ console.log(friends[friends.length - 1]);
 
 friends[0] = 'Ekpreet NN';
 console.log(friends);
+
+
+console.log("----------------------------------------");
+console.log("Chapter 4 - Basic Array Operations (Methods)");
+
+// Adding and removing elements
+// 1. push() - add elements to the end, return new length of array
+// 2. unshift() - add elements to the beginning, return new length of array
+// 3. pop() - remove last element, return removed element
+// 4. shift() - remove first element, return removed element
+
+const cur_len = friends.push('Anmol');
+console.log(friends, cur_len);
+
+friends.unshift('Shreyas')
+console.log(friends);
+
+const popped = friends.pop();
+console.log(friends, popped);
+
+const shifted = friends.shift();
+console.log(friends, shifted);
+
+// indexOf() - returns the index of the element, -1 if not found
+console.log(friends.indexOf('Sahil'));
+console.log(friends.indexOf('Bob'));
+
+// a new way of checking if an element is present in the array or not (ES6 feature)
+// includes() - returns true if present, false otherwise
+console.log(friends.includes('Sagar'));
+console.log(friends.includes('Bob'));
+
+// includes() uses strict equality (===) for comparison
+friends.push(23);
+console.log(friends.includes('23')); // false
+console.log(friends.includes(23));   // true
+
+friends.includes('Sagar') ? console.log('You have a friend called Sagar') : console.log('You dont have a friend called Sagar');
