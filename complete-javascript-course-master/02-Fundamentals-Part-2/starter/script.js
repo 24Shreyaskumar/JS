@@ -189,3 +189,76 @@ console.log(friends.includes('23')); // false
 console.log(friends.includes(23));   // true
 
 friends.includes('Sagar') ? console.log('You have a friend called Sagar') : console.log('You dont have a friend called Sagar');
+
+
+console.log("----------------------------------------");
+console.log("Chapter 5 - Objects");
+
+// Objects kind of looks like dictionaries in python
+// Key-Value pairs
+const shreyas = {
+    firstName: 'Shreyas',
+    lastName : 'Sharma',
+    age      : 2025 - 2002,
+    job      : 'Software Engineer',
+    friends  : ['Ekpreet', 'Sahil', 'Sagar']
+};
+
+console.log(shreyas);
+
+// These keys are also called properties of the object
+console.log(shreyas.firstName); //accessing using dot notation
+console.log(shreyas['lastName']); // accessing using bracket notation
+
+// The advantage of bracket notation is that we can use expressions inside the brackets, e.g.
+console.log(shreyas['first' + 'Name']);
+
+// Prompting user to enter the property they want to access
+// const info = prompt('What do you want to know about Shreyas? (firstName, lastName, age, job, friends)');
+// alert(shreyas[info] ? shreyas[info] : 'Uh ooh! Shreyas doesnt want you to know that!');
+
+// in the above line, we cannot use dot notation like shreyas.info, because info is a variable here, not the actual property name
+
+// Adding new properties to the object
+shreyas.location = 'Pune';
+shreyas['qualification'] = 'B.Tech CSE';
+console.log(shreyas);
+
+// Exercise
+// "Shreyas has 3 friends, and his best friend is called Ekpreet"
+console.log(`${shreyas.firstName} has ${shreyas.friends.length} friends, and hist best friend is called ${shreyas.friends[0]}`);
+
+// Refer https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence for operator precedence in JS and associativity.
+
+
+console.log("----------------------------------------");
+console.log("5.2 - Object Methods")
+
+
+// we can also add functions definations as values inside objects and such functions are called methods -
+
+const shreyas2 = {
+    firstName: 'Shreyas',
+    lastName : 'Sharma',
+    birthYear : 2002,
+    job      : 'Software Engineer',
+    age      : curYr => curYr - this.birthYear, //arrow function as method,
+    age2    : function(curYr) { // regular function as method
+        console.log(this); // 'this' keyword refers to the calling object
+        this.age3 = curYr - this.birthYear; // adding new property to the object using 'this' keyword
+        return this.age3;
+    }
+}
+
+console.log(shreyas2.age()); // undefined, because birthYear is not defined in the scope of the arrow function
+console.log(shreyas2['age2'](2025));
+console.log(shreyas2.age3);
+
+//Exercise
+// "Shreyas is a 23-year old Software Engineer, and he has a/no driver's license"
+
+shreyas2.hasDriverLicense = shreyas2.age3 >= 18;
+
+console.log(`${shreyas2.firstName} is a ${shreyas2.age3} year old ${shreyas2.job}, and he has ${shreyas2.hasDriverLicense ? 'a' : 'no'} driver's license`);
+
+//Note: Arrays are also objects in JS, so they can also have methods.
