@@ -16,27 +16,6 @@ Classes :
 
 console.log(document.querySelector('.message').textContent);
 
-// // Changing the text content of the element with class 'message'
-// document.querySelector('.message').textContent = '🎉 Correct Number!'
-
-// // changing the text content of the element with class 'number'
-// document.querySelector('.number').textContent = 13;
-
-// //changing the text content of the element with class 'score'
-// document.querySelector('.score').textContent = 10;
-
-// // log the value of the input field with class name as 'guess' - should be empty initially
-// console.log(document.querySelector('.guess').value);
-
-// // Now change the value of the input field with class as guess to 23
-// document.querySelector('.guess').value = 23;
-
-// // Log the value again to confirm the change
-// console.log(document.querySelector('.guess').value);
-
-// Note: The above code only demonstrates how to manipulate DOM elements using JavaScript.
-// It does not include any game logic or event handling.
-
 let number = Math.trunc(Math.random() * 20) + 1;
 // console.log(document.querySelector('.number').textContent);
 
@@ -48,6 +27,11 @@ document.querySelector('.btn.check').addEventListener(
         const score = Number(document.querySelector('.score').textContent);
         const highscore = Number(document.querySelector('.highscore').textContent);
         console.log(guessed, ' ', score, ' ', highscore);
+
+        if (guessed === 'NaN' || guessed > 20 || guessed < 1) {
+            document.querySelector('.message').textContent = "⛔ Not a valid Number! Guess Again!!"
+            return 1;
+        }
         
         if (score < 4) {
             document.querySelector('.message').textContent = "You lost!"
@@ -58,6 +42,7 @@ document.querySelector('.btn.check').addEventListener(
         if (guessed === number) {
             document.querySelector('.message').textContent = "🎉 Correct Number!";
             document.querySelector('.number').textContent = number;
+            document.querySelector('body').style.backgroundColor = '#60b347';
 
             if (score > highscore)
                 document.querySelector('.highscore').textContent = score;
@@ -67,7 +52,7 @@ document.querySelector('.btn.check').addEventListener(
 
         else if (guessed > number) {
             if (score >= 4)
-                document.querySelector('.message').textContent = "guess lower!"
+                document.querySelector('.message').textContent = "📉 guess lower!"
             else {
                 document.querySelector('.message').textContent = "You lost!"
                 document.querySelector('.number').textContent = number;
@@ -76,9 +61,9 @@ document.querySelector('.btn.check').addEventListener(
 
         else {
             if (score >= 4)
-                document.querySelector('.message').textContent = "guess higher!";
+                document.querySelector('.message').textContent = "📈 guess higher!";
             else {
-                document.querySelector('.message').textContent = "You lost!"
+                document.querySelector('.message').textContent = "🥱 Meh! You lost!"
                 document.querySelector('.number').textContent = number;
             }
         }
@@ -94,7 +79,9 @@ document.querySelector('.btn.again').addEventListener(
         document.querySelector('.message').textContent = 'Start guessing...';
         document.querySelector('.score').textContent = 20;
         document.querySelector('.number').textContent = '?';
+        document.querySelector('body').style.backgroundColor = '#222';
         number = Math.trunc(Math.random() * 20) + 1;
         console.log(number);
+        console.log()
     }
 )
